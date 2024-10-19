@@ -1,16 +1,17 @@
 package com.gamexo.backend.model;
 
+import com.gamexo.backend.model.enums.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "client")
-@Data
+@Table(name = "users")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Client {
+@Data
+public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,13 +20,11 @@ public class Client {
     @Column(nullable = false, length = 50)
     private String name;
 
-    @Column(nullable = false)
-    private String address;
+    @Column(unique = true)
+    private String email;
 
-    @Column(nullable = false, name = "zip_code", length = 6)
-    private int zipCode;
+    private String password;
 
-    @Column(nullable = false)
-    private String phone;
+    private Role role;
 
 }
