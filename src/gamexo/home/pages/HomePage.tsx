@@ -1,5 +1,6 @@
 import { FacebookIcon, InstagramIcon, WhatsAppIcon, XIcon } from "@/components/icons"
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 
 export const HomePage = () => {
     const heroRef = useRef(null);
@@ -19,15 +20,15 @@ export const HomePage = () => {
             {/* Barra superior */}
             <header className="h-[74px] w-full bg-[#000000]">
                 <div className="flex justify-between items-center w-[98%] mx-auto">
-                    <div className="w-[200px] h-[70px]">
+                    <Link to={'/'} className="w-[200px] h-[70px]">
                         <img src="../images/logo-gamexo.png" className="ml-5 mt-2" />
-                    </div>
+                    </Link>
                     <nav className="flex items-center text-white space-x-6 font-bold text-[20px]">
                         <ol><a href="#hero" onClick={() => scrollToSection(heroRef)}>Inicio</a></ol>
                         <ol><a href="#nosotros" onClick={() => scrollToSection(nosotrosRef)}>Nosotros</a></ol>
                         <ol><a href="#catalogo-juegos" onClick={() => scrollToSection(catalogoRef)}>Catálogo de juegos</a></ol>
                         <ol><a href="#soporte" onClick={() => scrollToSection(soporteRef)}>Soporte</a></ol>
-                        <button className="bg-[#39FF14] rounded-3xl w-[143px] h-[47px]">Iniciar Sesión</button>
+                        <Link className="bg-[#39FF14] rounded-3xl w-[143px] h-[47px] flex items-center justify-center" to={"auth/login"}>Iniciar Sesión</Link>
                     </nav>
                 </div>
             </header>

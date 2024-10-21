@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom"
 const menu = [
     {
         "icon": <LayoutDashboard />,
-        "path": '/dashboard/',
+        "path": '/dashboard',
         "name": "Dashboard"
     },
     {
@@ -48,11 +48,10 @@ export const Sidebar = () => {
             <div>
                 {
                     menu.map((item, idx) => (
-                        <div className="text-white flex gap-1 mx-10">
+                        <div  key={idx} className="text-white flex gap-1 mx-10">
                             <NavLink
-                                key={idx}
                                 to={item.path}
-                                end={item.path === '/dashboard/'}
+                                end={item.path === '/dashboard'}
                                 className={({ isActive }) =>
                                     isActive
                                         ? "bg-green-500 w-[250px] text-white rounded-lg flex items-center gap-2 px-4 py-3 my-1"

@@ -1,5 +1,5 @@
 import { BrowserRouter } from "react-router-dom"
-import { AppRoute } from "./routes/AppRoute"
+import { AppRoute } from "./router/AppRoute"
 
 
 export const GamexoApp = () => {

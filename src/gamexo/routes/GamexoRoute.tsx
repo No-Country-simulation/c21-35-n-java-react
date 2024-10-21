@@ -1,12 +1,10 @@
 import { Route, Routes } from "react-router-dom"
-import { GamexoPage } from "../pages/GamexoPage"
-import { HomePage } from "../pages/HomePage"
+import { GamexoPage } from "../dashboard/pages/GamexoPage"
 
 export const GamexoRoute = () => {
     return (
         <Routes>
-            <Route path='/' element={<HomePage />} />
-            <Route path='/dashboard/' element={<GamexoPage />} />
+            <Route path='/dashboard' element={<GamexoPage />} />
         </Routes>
     )
 }

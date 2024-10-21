@@ -1,0 +1,6 @@
+export { DashboardPage } from '../view/DashboardPage'
+export { FavoritosPage } from '../view/FavoritosPage'
+export { GameStorePage } from '../view/GameStorePage'
+export { ProximamentePage } from '../view/ProximamentePage'
+export { NoticiasPage } from '../view/NoticiasPage'
+export { AjustesPage } from '../view/AjustesPage'
