@@ -1,6 +1,7 @@
 import {  Route, Routes } from "react-router-dom"
 // import { GamexoApp } from "../GamexoApp";
 import { GamexoPage } from "../gamexo/pages/GamexoPage";
+import { HomePage } from "@/gamexo/pages/HomePage";
 
 export const AppRoute = () => {
     // const status = true;
@@ -9,7 +10,8 @@ export const AppRoute = () => {
     // }
     return (
         <Routes>
-            <Route path="/*" element={<GamexoPage />} />
+            <Route path="/dashboard" element={<GamexoPage />} />
+            <Route path="/" element={<HomePage />} />
             {/* {
                 (status === true)
                     ? <Route path="/*" element={<GamexoApp />} />

@@ -7,12 +7,12 @@ export const GamexoPage = () => {
   return (
     <GamexoLayout>
       <Routes>
-        <Route path="/" element={<DashboardPage />} />
-        <Route path="/game-store" element={<GameStorePage />} />
-        <Route path="/favoritos" element={<FavoritosPage />} />
-        <Route path="/proximamente" element={<ProximamentePage />} />
-        <Route path="/noticias" element={<NoticiasPage />} />
-        <Route path="/ajustes" element={<AjustesPage />} />
+        <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="/dashboard/game-store" element={<GameStorePage />} />
+        <Route path="/dashboard/favoritos" element={<FavoritosPage />} />
+        <Route path="/dashboard/proximamente" element={<ProximamentePage />} />
+        <Route path="/dashboard/noticias" element={<NoticiasPage />} />
+        <Route path="/dashboard/ajustes" element={<AjustesPage />} />
       </Routes>
     </GamexoLayout>
   )

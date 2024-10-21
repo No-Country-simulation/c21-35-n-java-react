@@ -6,32 +6,32 @@ import { NavLink } from "react-router-dom"
 const menu = [
     {
         "icon": <LayoutDashboard />,
-        "path": '/',
+        "path": '/dashboard/',
         "name": "Dashboard"
     },
     {
         "icon": <LayoutDashboard />,
-        "path": '/game-store',
+        "path": '/dashboard/game-store',
         "name": "Mis juegos"
     },
     {
         "icon": <Bookmark />,
-        "path": '/favoritos',
+        "path": '/dashboard/favoritos',
         "name": "Favoritos"
     },
     {
         "icon": <Clock4 />,
-        "path": '/proximamente',
+        "path": '/dashboard/proximamente',
         "name": "Proximamente"
     },
     {
         "icon": <MessageSquare />,
-        "path": '/noticias',
+        "path": '/dashboard/noticias',
         "name": "Blog y Noticias"
     },
     {
         "icon": <Settings />,
-        "path": '/ajustes',
+        "path": '/dashboard/ajustes',
         "name": "Ajustes"
     }
 ]
@@ -43,7 +43,7 @@ export const Sidebar = () => {
 
         <div className="w-[305px] bg-[#0A0A0A] h-[832px]">
             <div className="w-[200px] h-[100px] m-5 ml-5">
-                <img src="../../public/images/logo-gamexo.png" className="ml-5" />
+                <img src="../images/logo-gamexo.png" className="ml-5" />
             </div>
             <div>
                 {
@@ -52,6 +52,7 @@ export const Sidebar = () => {
                             <NavLink
                                 key={idx}
                                 to={item.path}
+                                end={item.path === '/dashboard/'}
                                 className={({ isActive }) =>
                                     isActive
                                         ? "bg-green-500 w-[250px] text-white rounded-lg flex items-center gap-2 px-4 py-3 my-1"
