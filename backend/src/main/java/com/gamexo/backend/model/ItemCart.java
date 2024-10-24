@@ -7,20 +7,21 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "product")
+@Table(name = "itemCart")
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Product {
+public class ItemCart {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false, unique = true, length = 100)
     private String name;
 
-    @Column(nullable = false, length = 5000)
+    @Column(nullable = false, length = 1000)
     private String description;
 
     @Column(nullable = false)
@@ -32,11 +33,8 @@ public class Product {
     @Column(nullable = false)
     private String img;
 
-    private double rating;
-
-    private String released;
-
-    private String website;
-
+    @ManyToOne
+    @JoinColumn(name = "cart_id")
+    private Cart cart;
 
 }

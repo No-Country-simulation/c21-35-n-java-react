@@ -1,9 +1,7 @@
 package com.gamexo.backend.mapper;
 
 import com.gamexo.backend.dto.user.UserInfoDTO;
-import com.gamexo.backend.dto.user.UserRegistrationDTO;
 import com.gamexo.backend.model.UserEntity;
-import com.gamexo.backend.model.enums.Role;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
@@ -11,22 +9,20 @@ import org.mapstruct.Named;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-@Mapper(componentModel = MappingConstants.ComponentModel.SPRING,
-        imports = Role.class)
+@Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface UserMapper {
 
     PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-    @Mapping(target = "role", expression = "java(Role.CLIENT)")
-    @Mapping(target = "id", ignore = true)
-    @Mapping(target = "password", source = "password", qualifiedByName = "mapPassword")
-    UserEntity userDtoToUser(UserRegistrationDTO userRegistrationDTO);
-
+    @Mapping(target = "name", source = "user.customer.name")
     UserInfoDTO userToDto(UserEntity user);
 
+    @Mapping(target = "name", source = "user.customer.name")
+    @Mapping(target = "accessToken", source = "accessToken")
+    UserInfoDTO userToDtoWithToken(UserEntity user, String accessToken);
+
     @Named("mapPassword")
-    default String mapPassword(String password){
+    default String mapPassword(String password) {
         return passwordEncoder.encode(password);
     }
-
 }

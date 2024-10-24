@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e74f5a55-c57c-4ec7-a295-8965d0e3bf27" name="Changes" comment="Implement Spring security and JWT tokens. Update UserEntity. Add MapStruct dependencies">
+      <change afterPath="$PROJECT_DIR$/backend/data/testdb.mv.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/config/AppConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/config/ControllersExceptions.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/config/ResponseExeption.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/controller/CartController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/controller/OrderController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/dto/UserInfoDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/dto/order/CartDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/dto/order/CustomerDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/dto/order/OrderDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/dto/order/ProductDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/model/Cart.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/model/Customer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/model/ItemCart.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/model/Order.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/repository/CartRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/repository/OrderRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/service/CartService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/service/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/c21-35-n-java-react.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/backend/src/main/java/com/gamexo/backend/config/JwtTokenFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/backend/src/main/java/com/gamexo/backend/config/JwtTokenFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/backend/src/main/java/com/gamexo/backend/config/JwtUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/backend/src/main/java/com/gamexo/backend/config/JwtUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/backend/src/main/java/com/gamexo/backend/config/SecurityBeansInjector.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/backend/src/main/java/com/gamexo/backend/config/SecurityBeansInjector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/backend/src/main/java/com/gamexo/backend/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/backend/src/main/java/com/gamexo/backend/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/backend/src/main/java/com/gamexo/backend/config/UserDetailsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/backend/src/main/java/com/gamexo/backend/config/UserDetailsServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/backend/src/main/java/com/gamexo/backend/dto/UserLoginRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/backend/src/main/java/com/gamexo/backend/dto/UserLoginRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/backend/src/main/java/com/gamexo/backend/dto/UserRegistrationDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/backend/src/main/java/com/gamexo/backend/dto/UserRegistrationDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/config/JwtTokenFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/config/JwtTokenFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/config/JwtUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/config/JwtUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/config/SecurityBeansInjector.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/config/SecurityBeansInjector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/config/UserDetailsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/config/UserDetailsServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/config/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/config/security/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/config/security/jwt/JwtTokenFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/config/security/jwt/JwtTokenFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/config/security/jwt/JwtUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/config/security/jwt/JwtUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/config/security/userdetails/SecurityBeansInjector.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/config/security/userdetails/SecurityBeansInjector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/config/security/userdetails/UserDetailsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/config/security/userdetails/UserDetailsServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/dto/UserAuthorizedDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/dto/UserAuthorizedDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/dto/UserLoginRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/dto/UserLoginRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/dto/UserRegistrationDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/dto/UserRegistrationDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/dto/user/UserInfoDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/dto/user/UserInfoDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/dto/user/UserLoginRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/dto/user/UserLoginRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/dto/user/UserRegistrationDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/dto/user/UserRegistrationDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/mapper/UserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/model/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/model/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/gamexo/backend/model/UserEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/test/java/com/gamexo/backend/BackendApplicationTests.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="Class" />
+        <option value="Record" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2nWUvJkxbFFRP5wdE3mEuFp7jLK" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_directory_selection": "C:/Users/user/Desktop/portfolio-projects/c21-35-n-java-react/backend/src/main/java",
+    "last_opened_file_path": "C:/Users/user/Desktop/portfolio-projects/c21-35-n-java-react",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "project.propVCSSupport.Mappings"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.gamexo.backend.dto.product" />
+      <recent name="com.gamexo.backend.dto" />
+      <recent name="com.gamexo.backend.mapper" />
+      <recent name="com.gamexo.backend.config" />
+      <recent name="com.gamexo.backend.model.enums" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="BackendApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.gamexo.backend.BackendApplication" />
+      <module name="backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.gamexo.backend.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="backend" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="backend" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.BackendApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e74f5a55-c57c-4ec7-a295-8965d0e3bf27" name="Changes" comment="" />
+      <created>1729088555113</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1729088555113</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Implement Spring security and JWT tokens. Update UserEntity. Add MapStruct dependencies">
+      <created>1729349200326</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1729349200326</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Implement Spring security and JWT tokens. Update UserEntity. Add MapStruct dependencies" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implement Spring security and JWT tokens. Update UserEntity. Add MapStruct dependencies" />
+  </component>
+</project>

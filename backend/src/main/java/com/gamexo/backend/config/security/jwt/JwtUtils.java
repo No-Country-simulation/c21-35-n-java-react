@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Component;
+
 import java.util.Date;
 import java.util.UUID;
 
@@ -22,7 +23,7 @@ public class JwtUtils {
     @Value("$security.jwt.user.generator")
     private String userGenerator;
 
-    public String createToken(Authentication authentication){
+    public String createToken(Authentication authentication) {
         Algorithm algorithm = Algorithm.HMAC256(this.privateKey);
 
         String userName = authentication.getPrincipal().toString();
@@ -43,8 +44,8 @@ public class JwtUtils {
 
     }
 
-    public DecodedJWT validateToken(String token){
-        try{
+    public DecodedJWT validateToken(String token) {
+        try {
             Algorithm algorithm = Algorithm.HMAC256(this.privateKey);
 
             JWTVerifier verifier = JWT.require(algorithm)
@@ -52,16 +53,16 @@ public class JwtUtils {
                     .build();
 
             return verifier.verify(token);
-        }catch(JWTVerificationException exc){
+        } catch (JWTVerificationException exc) {
             throw new JWTVerificationException("Token is invalid. Not authorized");
         }
     }
 
-    public String getUserName(DecodedJWT decodedJWT){
+    public String getUserName(DecodedJWT decodedJWT) {
         return decodedJWT.getSubject();
     }
 
-    public Claim getSpecificClaim(DecodedJWT decodedJWT, String claimName){
+    public Claim getSpecificClaim(DecodedJWT decodedJWT, String claimName) {
         return decodedJWT.getClaim(claimName);
     }
 

@@ -22,19 +22,21 @@ public class SecurityConfig {
     private JwtUtils jwtUtils;
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
-            return httpSecurity
-                    .csrf(AbstractHttpConfigurer::disable)
-                    .cors(Customizer.withDefaults())
-                    .sessionManagement(sessionMngConfig -> sessionMngConfig.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                    .authorizeHttpRequests(auth -> {
-                            auth.requestMatchers(HttpMethod.POST, "/auth/**").permitAll();
-                            auth.requestMatchers(HttpMethod.GET, "/users", "/users/**").hasRole("ADMIN");
-                            auth.requestMatchers(HttpMethod.GET, "/products/**").authenticated();
-                            auth.anyRequest().permitAll();
-                            })
-                    .addFilterBefore(new JwtTokenFilter(jwtUtils), BasicAuthenticationFilter.class)
-                    .build();
+    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
+        return httpSecurity
+                .csrf(AbstractHttpConfigurer::disable)
+                .cors(Customizer.withDefaults())
+                .sessionManagement(sessionMngConfig -> sessionMngConfig.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .authorizeHttpRequests(auth -> {
+                    auth.requestMatchers(HttpMethod.POST, "/auth/**").permitAll();
+                    auth.requestMatchers(HttpMethod.GET, "/users", "/users/**").hasRole("ADMIN");
+                    auth.requestMatchers(HttpMethod.GET, "/products/**").authenticated();
+                    auth.requestMatchers("/order", "/order/**").authenticated();
+                    auth.requestMatchers("/cart", "/cart/**").authenticated();
+                    auth.anyRequest().permitAll();
+                })
+                .addFilterBefore(new JwtTokenFilter(jwtUtils), BasicAuthenticationFilter.class)
+                .build();
     }
 
 }

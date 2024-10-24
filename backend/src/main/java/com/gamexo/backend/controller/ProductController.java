@@ -6,9 +6,11 @@ import com.gamexo.backend.service.ProductService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
-
 import java.net.URI;
 import java.util.Map;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/products")
@@ -38,6 +40,7 @@ public class ProductController {
         Product product = productService.getSingleProduct(id);
         return ResponseEntity.ok(product);
     }
+
 
     @GetMapping("/test") String openEndpoint(){
         return "Hola!!";

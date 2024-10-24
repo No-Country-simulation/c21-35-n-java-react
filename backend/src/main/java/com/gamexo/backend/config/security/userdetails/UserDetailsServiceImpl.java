@@ -1,12 +1,15 @@
 package com.gamexo.backend.config.security.userdetails;
 
+import com.gamexo.backend.config.ResponseExeption;
 import com.gamexo.backend.config.security.jwt.JwtUtils;
-import com.gamexo.backend.dto.user.UserLoginRequest;
 import com.gamexo.backend.dto.user.UserAuthorizedDTO;
 import com.gamexo.backend.dto.user.UserInfoDTO;
+import com.gamexo.backend.dto.user.UserLoginRequest;
 import com.gamexo.backend.dto.user.UserRegistrationDTO;
 import com.gamexo.backend.mapper.UserMapper;
+import com.gamexo.backend.model.Customer;
 import com.gamexo.backend.model.UserEntity;
+import com.gamexo.backend.model.enums.Role;
 import com.gamexo.backend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -47,9 +50,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         UserEntity user = userRepository.findByEmail(username)
-                .orElseThrow( () -> new UsernameNotFoundException("Email " + username + " not found "));
+                .orElseThrow(() -> new UsernameNotFoundException("Email " + username + " not found "));
 
-        //Get list of simpled granted authorities from Role
         List<SimpleGrantedAuthority> simpleGrantedAuthorities = new ArrayList<>();
         simpleGrantedAuthorities.add(new SimpleGrantedAuthority(("ROLE_".concat(user.getRole().name()))));
 
@@ -65,13 +67,31 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     }
 
 
-    public UserInfoDTO registerUser(UserRegistrationDTO userRegistrationDTO){
-        UserEntity user = userMapper.userDtoToUser(userRegistrationDTO);
-        user = userRepository.save(user);
-        return userMapper.userToDto(user);
+    public UserInfoDTO registerUser(UserRegistrationDTO userRegistrationDTO) {
+        emailInUsed(userRegistrationDTO.email());
+
+        UserEntity user = UserEntity.builder()
+                .email(userRegistrationDTO.email())
+                .password(passwordEncoder.encode(userRegistrationDTO.password()))
+                .role(Role.CLIENT)
+                .customer(Customer.builder().name(userRegistrationDTO.name()).build())
+                .build();
+
+        user.getCustomer().setUser(user);
+
+        userRepository.save(user);
+
+        Authentication authentication = new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword());
+
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+
+        String accessToken = jwtUtils.createToken(authentication);
+
+        return userMapper.userToDtoWithToken(user, accessToken);
     }
 
-    public UserAuthorizedDTO loginUser(UserLoginRequest loginRequest){
+
+    public UserAuthorizedDTO loginUser(UserLoginRequest loginRequest) {
 
         String userName = loginRequest.email();
         String password = loginRequest.password();
@@ -100,7 +120,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
         UserDetails userDetails = loadUserByUsername(userName);
 
-        if(!passwordEncoder.matches(password, userDetails.getPassword())){
+        if (!passwordEncoder.matches(password, userDetails.getPassword())) {
             throw new BadCredentialsException("Invalid password");
         }
 
@@ -109,4 +129,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     }
 
 
+    private void emailInUsed(String email) {
+        if (userRepository.findByEmail(email).isPresent())
+            throw new ResponseExeption("404", "Email en uso");
+    }
 }
