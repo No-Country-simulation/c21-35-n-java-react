@@ -31,4 +31,10 @@ public class OrderController {
     public ResponseEntity<?> myOrders() {
         return ResponseEntity.ok(orderService.myOrders());
     }
+
+    @GetMapping("{id}/itemCart/{itemCartId}")
+    public ResponseEntity<?> myOrders(@PathVariable Long id, @PathVariable Long itemCartId) {
+        return ResponseEntity.ok(orderService.itemCartOrder(id, itemCartId));
+    }
+
 }

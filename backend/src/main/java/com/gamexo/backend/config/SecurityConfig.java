@@ -30,6 +30,7 @@ public class SecurityConfig {
                     auth.requestMatchers(HttpMethod.GET, "/users", "/users/**").hasRole("ADMIN");
                     auth.requestMatchers(HttpMethod.GET, "/products/**").authenticated();
                     auth.requestMatchers("/order", "/order/**").authenticated();
+                    auth.requestMatchers("/cart", "/cart/**").authenticated();
                     auth.anyRequest().permitAll();
                 })
                 .addFilterBefore(new JwtTokenFilter(jwtUtils), BasicAuthenticationFilter.class)

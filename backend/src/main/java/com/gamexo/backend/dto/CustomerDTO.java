@@ -17,7 +17,7 @@ public record CustomerDTO(
         );
     }
 
-    static CustomerDTO fromDTO(Customer customer) {
+    public static CustomerDTO fromDTO(Customer customer) {
         return new CustomerDTO(customer);
     }
 }

@@ -1,7 +1,10 @@
 package com.gamexo.backend.service;
 
 import com.gamexo.backend.config.ResponseExeption;
+import com.gamexo.backend.dto.CartDTO;
+import com.gamexo.backend.dto.CustomerDTO;
 import com.gamexo.backend.dto.OrderDTO;
+import com.gamexo.backend.dto.ProductDTO;
 import com.gamexo.backend.model.Order;
 import com.gamexo.backend.model.UserEntity;
 import com.gamexo.backend.repository.OrderRepository;
@@ -53,8 +56,37 @@ public class OrderService {
                 .toList();
     }
 
+    public OrderDTO itemCartOrder(Long orderId, Long itemCartId) {
+        Order order = orderRepository.findById(orderId)
+                .orElseThrow(() -> new ResponseExeption("404", "Order not found"));
+
+        ProductDTO product = order.getCart().getItemCartList().stream()
+                .filter(itemCart -> itemCart.getId().equals(itemCartId))
+                .map(ProductDTO::new)
+                .findFirst()
+                .orElseThrow(() -> new ResponseExeption("404", "ItemCart not found"));
+
+        return new OrderDTO(
+                order.getId(),
+                order.getCreditCard(),
+                order.getPrice(),
+                order.getCreateAt(),
+                order.getCodeReference(),
+                new CartDTO(
+                        order.getCart().getId(),
+                        order.getCart().getCreateAt(),
+                        order.getCart().getUpdateAt(),
+                        List.of(product)
+                ),
+                CustomerDTO.fromDTO(order.getCustomer())
+        );
+    }
+
+
     private UserEntity getCurrentUser() {
         String email = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
         return userRepository.findByEmail(email).orElse(null);
     }
+
+
 }
