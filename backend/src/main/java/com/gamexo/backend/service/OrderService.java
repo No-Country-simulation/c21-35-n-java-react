@@ -66,18 +66,20 @@ public class OrderService {
                 .findFirst()
                 .orElseThrow(() -> new ResponseExeption("404", "ItemCart not found"));
 
+        CartDTO filteredCartDTO = new CartDTO(
+                order.getCart().getId(),
+                order.getCart().getCreateAt(),
+                order.getCart().getUpdateAt(),
+                List.of(product)
+        );
+
         return new OrderDTO(
                 order.getId(),
                 order.getCreditCard(),
                 order.getPrice(),
                 order.getCreateAt(),
                 order.getCodeReference(),
-                new CartDTO(
-                        order.getCart().getId(),
-                        order.getCart().getCreateAt(),
-                        order.getCart().getUpdateAt(),
-                        List.of(product)
-                ),
+                filteredCartDTO,
                 CustomerDTO.fromDTO(order.getCustomer())
         );
     }

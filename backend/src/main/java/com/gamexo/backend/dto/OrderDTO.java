@@ -15,7 +15,6 @@ public record OrderDTO(
         CustomerDTO customer
 ) {
 
-
     public OrderDTO(Order order) {
         this(
                 order.getId(),
@@ -28,19 +27,14 @@ public record OrderDTO(
         );
     }
 
-
     public static Order fromOrder(OrderDTO orderDTO, UserEntity user) {
         return Order.builder()
                 .creditCard(orderDTO.creditCard())
                 .price(orderDTO.price())
                 .createAt(orderDTO.createAt())
                 .codeReference(orderDTO.codeReference())
-                .cart(CartDTO.fromCart(orderDTO.cartDTO)
-                )
+                .cart(CartDTO.fromCart(orderDTO.cartDTO))
                 .customer(user.getCustomer())
                 .build();
     }
-
-
 }
-
