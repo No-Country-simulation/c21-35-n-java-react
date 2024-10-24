@@ -1,4 +1,4 @@
-import { Bookmark, Clock4, LayoutDashboard, MessageSquare, Settings } from "lucide-react"
+import { Archive, Bookmark, Clock4, LayoutDashboard, MessageSquare, Settings, Star } from "lucide-react"
 import { NavLink } from "react-router-dom"
 
 
@@ -10,15 +10,21 @@ const menu = [
         "name": "Dashboard"
     },
     {
-        "icon": <LayoutDashboard />,
+        "icon": <Archive />,
         "path": '/dashboard/game-store',
-        "name": "Mis juegos"
+        "name": "Game Store"
     },
     {
         "icon": <Bookmark />,
+        "path": '/dashboard/juegos',
+        "name": "Mis juegos"
+    },
+    {
+        "icon": <Star />,
         "path": '/dashboard/favoritos',
         "name": "Favoritos"
     },
+    
     {
         "icon": <Clock4 />,
         "path": '/dashboard/proximamente',
@@ -41,9 +47,9 @@ export const Sidebar = () => {
 
     return (
 
-        <div className="w-[305px] bg-[#0A0A0A] h-[832px]">
+        <div className="w-[305px] bg-[#0A0A0A] min-h-screen">
             <div className="w-[200px] h-[100px] m-5 ml-5">
-                <img src="../images/logo-gamexo.png" className="ml-5" />
+                <img src="../../images/logo-gamexo.png" className="ml-5" />
             </div>
             <div>
                 {

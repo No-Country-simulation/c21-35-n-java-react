@@ -1,6 +1,6 @@
 
 export const GameStorePage = () => {
   return (
-    <div>GameStore</div>
+    <div className="text-white">Hola</div>
   )
 }
