@@ -1,12 +1,11 @@
 package com.gamexo.backend.service;
 
-import com.gamexo.backend.dto.UserInfoDTO;
+import com.gamexo.backend.dto.user.UserInfoDTO;
 import com.gamexo.backend.mapper.UserMapper;
 import com.gamexo.backend.model.UserEntity;
 import com.gamexo.backend.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -1,7 +1,7 @@
 package com.gamexo.backend.mapper;
 
-import com.gamexo.backend.dto.UserInfoDTO;
-import com.gamexo.backend.dto.UserRegistrationDTO;
+import com.gamexo.backend.dto.user.UserInfoDTO;
+import com.gamexo.backend.dto.user.UserRegistrationDTO;
 import com.gamexo.backend.model.UserEntity;
 import com.gamexo.backend.model.enums.Role;
 import org.mapstruct.Mapper;

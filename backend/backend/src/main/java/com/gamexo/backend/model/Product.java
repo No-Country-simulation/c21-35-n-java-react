@@ -13,13 +13,12 @@ import lombok.NoArgsConstructor;
 public class Product {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false, unique = true, length = 100)
     private String name;
 
-    @Column(nullable = false, length = 1000)
+    @Column(nullable = false, length = 5000)
     private String description;
 
     @Column(nullable = false)
@@ -30,5 +29,12 @@ public class Product {
 
     @Column(nullable = false)
     private String img;
+
+    private double rating;
+
+    private String released;
+
+    private String website;
+
 
 }

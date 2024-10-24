@@ -1,4 +1,4 @@
-package com.gamexo.backend.dto;
+package com.gamexo.backend.dto.user;
 
 public record UserRegistrationDTO(String name,
                                   String email,

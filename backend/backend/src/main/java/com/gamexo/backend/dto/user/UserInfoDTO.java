@@ -1,8 +1,7 @@
-package com.gamexo.backend.dto;
+package com.gamexo.backend.dto.user;
 
 public record UserInfoDTO(Long id,
                           String name,
                           String email,
-                          String password,
                           String role){
 }

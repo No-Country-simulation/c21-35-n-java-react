@@ -1,4 +1,4 @@
-package com.gamexo.backend.config;
+package com.gamexo.backend.config.security.jwt;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;

@@ -1,6 +1,6 @@
 package com.gamexo.backend.controller;
 
-import com.gamexo.backend.dto.UserInfoDTO;
+import com.gamexo.backend.dto.user.UserInfoDTO;
 import com.gamexo.backend.model.UserEntity;
 import com.gamexo.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

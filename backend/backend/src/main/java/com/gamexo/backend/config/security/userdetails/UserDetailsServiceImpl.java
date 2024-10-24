@@ -1,9 +1,10 @@
-package com.gamexo.backend.config;
+package com.gamexo.backend.config.security.userdetails;
 
-import com.gamexo.backend.dto.UserLoginRequest;
-import com.gamexo.backend.dto.UserAuthorizedDTO;
-import com.gamexo.backend.dto.UserInfoDTO;
-import com.gamexo.backend.dto.UserRegistrationDTO;
+import com.gamexo.backend.config.security.jwt.JwtUtils;
+import com.gamexo.backend.dto.user.UserLoginRequest;
+import com.gamexo.backend.dto.user.UserAuthorizedDTO;
+import com.gamexo.backend.dto.user.UserInfoDTO;
+import com.gamexo.backend.dto.user.UserRegistrationDTO;
 import com.gamexo.backend.mapper.UserMapper;
 import com.gamexo.backend.model.UserEntity;
 import com.gamexo.backend.repository.UserRepository;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
@@ -77,10 +79,21 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         Authentication authentication = authenticate(userName, password);
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
+        String authority = SecurityContextHolder.getContext().getAuthentication().getAuthorities().stream()
+                .findFirst() // Get the first (and only) authority
+                .map(GrantedAuthority::getAuthority)
+                .orElse(""); // Return an empty string if no authority is found
+
+        int downLineIdx = authority.indexOf("_");
+        authority = authority.substring(downLineIdx + 1);
+
+
+
         String accessToken = jwtUtils.createToken(authentication);
         return new UserAuthorizedDTO(userName,
                 "User logged sucessfully",
-                accessToken);
+                accessToken,
+                authority);
     }
 
     private Authentication authenticate(String userName, String password) {
