@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="ProjectModuleManager">
-    <modules>
-      <module fileurl="file://$PROJECT_DIR$/backend/backend/backend.iml" filepath="$PROJECT_DIR$/backend/backend/backend.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/c21-35-n-java-react.iml" filepath="$PROJECT_DIR$/.idea/c21-35-n-java-react.iml" />
-    </modules>
-  </component>
-</project>
