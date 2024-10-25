@@ -2,6 +2,7 @@ package com.gamexo.backend.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.gamexo.backend.dto.product.ProductInfoDTO;
 import com.gamexo.backend.dto.product.ProductMappingDTO;
 import com.gamexo.backend.dto.product.ProductRegistrationDTO;
 import com.gamexo.backend.mapper.ProductMapper;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -83,5 +85,10 @@ public class ProductService {
     public Product getSingleProduct(Long id) {
         return productRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Product not found with ID: " + id));
+    }
+
+    public List<ProductInfoDTO> getProducts(){
+        List<Product> products =  productRepository.findAll();
+        return productMapper.toDtoList(products);
     }
 }

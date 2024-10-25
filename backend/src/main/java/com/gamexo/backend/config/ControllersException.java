@@ -1,6 +1,5 @@
 package com.gamexo.backend.config;
 
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -10,7 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @ControllerAdvice
-public class ControllersExceptions {
+public class ControllersException {
 
 
     @ExceptionHandler(ResponseExeption.class)

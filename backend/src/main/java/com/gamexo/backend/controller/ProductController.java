@@ -1,5 +1,6 @@
 package com.gamexo.backend.controller;
 
+import com.gamexo.backend.dto.product.ProductInfoDTO;
 import com.gamexo.backend.dto.product.ProductRegistrationDTO;
 import com.gamexo.backend.model.Product;
 import com.gamexo.backend.service.ProductService;
@@ -7,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 import java.net.URI;
+import java.util.List;
 import java.util.Map;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,9 +43,12 @@ public class ProductController {
         return ResponseEntity.ok(product);
     }
 
-
-    @GetMapping("/test") String openEndpoint(){
-        return "Hola!!";
+    @GetMapping
+    public ResponseEntity<List<ProductInfoDTO>> getGames(){
+        List<ProductInfoDTO> productInfoDTOS = productService.getProducts();
+        return ResponseEntity.ok(productInfoDTOS);
     }
+
+    // pending PUT, DELETE method
 
 }
