@@ -1,12 +1,12 @@
-# Cambiar a Java 17 en lugar de Java 19
+# Use OpenJDK 19 for the build stage
 FROM openjdk:19-jdk AS build
 WORKDIR /app
-COPY pom.xml .
-COPY src src
 
-# Copy Maven wrapper
-COPY mvnw .
-COPY .mvn .mvn
+# Copy files from the backend directory
+COPY backend/pom.xml .
+COPY backend/src src
+COPY backend/mvnw .
+COPY backend/.mvn .mvn
 
 # Set execution permission for the Maven wrapper
 RUN chmod +x ./mvnw
@@ -18,5 +18,5 @@ VOLUME /tmp
 
 # Copy the JAR from the build stage
 COPY --from=build /app/target/*.jar app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
+ENTRYPOINT ["java", "-jar", "/app.jar"]
 EXPOSE 8080
