@@ -2,7 +2,7 @@ import { MoveLeft, MoveRight } from "lucide-react"
 
 export const DashboardPage = () => {
   return (
-    <div className="relative w-full min-h-screen bg-[#000000]">
+    <div className="relative w-full min-h-screen bg-[#000000] my-12">
       <img src="../images/dashboard/image-dashboard-1.png" className="brightness-50 object-fill w-[884px] h-[337px] m-auto mt-[42px]" />
       <div className="w-[385px] h-[252px] text-white absolute top-20 left-24">
         <div>

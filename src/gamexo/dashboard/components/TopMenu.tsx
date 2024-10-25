@@ -1,6 +1,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Input } from "@/components/ui/input"
-import { Bell, MessageCircle, Search } from "lucide-react"
+import { Bell, MessageCircle, Search, Store } from "lucide-react"
+import { NavLink } from "react-router-dom"
 
 export const TopMenu = () => {
     return (
@@ -15,11 +16,24 @@ export const TopMenu = () => {
                     />
                 </div>
                 <div className="flex gap-6 mr-5">
-                    <div className="flex items-center gap-4">
-                        <MessageCircle className="text-white" />
-                        <Bell className="text-white" />
+                    <div className="flex items-center gap-6">
+                        <NavLink to={'/dashboard/carrito'}
+                            className={({ isActive }) =>
+                                isActive
+                                    ? "text-[#2ACE17]"
+                                    : "text-white"
+                            }
+                        >
+                            <Store />
+                        </NavLink>
+                        <button>
+                            <MessageCircle className="text-white" />
+                        </button>
+                        <button>
+                            <Bell className="text-white" />
+                        </button>
                     </div>
-                    <div className="flex gap-2 items-center">
+                    <div className="flex gap-2 items-center cursor-pointer">
                         <div>
                             <Avatar>
                                 <AvatarImage src="" alt="@shadcn" />

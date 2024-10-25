@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom"
 import { GamexoLayout } from "../layout/GamexoLayout"
-import { AjustesPage, BlogDetallePage, DashboardPage, DetallesNoticiasPage, FavoritosPage, GameStorePage, JuegosDetallePage, JuegosPage, LanzamientosPage, NoticiasPage, ProximamentePage } from "../view"
+import { AjustesPage, BlogDetallePage, CarritoPage, DashboardPage, DetallesNoticiasPage, FavoritosPage, GameStorePage, JuegosDetallePage, JuegosPage, LanzamientosPage, NoticiasPage, ProximamentePage } from "../view"
 
 
 export const GamexoPage = () => {
@@ -19,6 +19,7 @@ export const GamexoPage = () => {
         <Route path="/noticias/detalles" element={<DetallesNoticiasPage />} />
         <Route path="/noticias/blog" element={<BlogDetallePage />} />
         <Route path="/ajustes" element={<AjustesPage />} />
+        <Route path="/carrito" element={<CarritoPage />} />
       </Routes>
     </GamexoLayout>
   )
