@@ -1,24 +1,17 @@
-# Use OpenJDK 19 for the build stage
-FROM openjdk:19-jdk AS build
+# Use Maven in the build stage
+FROM maven:3.9.9-openjdk-19 AS build
 WORKDIR /app
 
-# Copy files from the backend directory
+# Copy files
 COPY backend/pom.xml .
 COPY backend/src src
 
-# Copy Maven wrapper
-COPY backend/mvnw .
-COPY backend/.mvn .mvn
+# Build the project
+RUN mvn clean package -DskipTests
 
-# Set execution permission for the Maven wrapper
-RUN chmod +x ./mvnw
-RUN ./mvnw clean package -DskipTests
-
-# Stage 2: Create the final Docker image using OpenJDK 19
+# Use JDK 19 for the runtime stage
 FROM openjdk:19-jdk
-VOLUME /tmp
-
-# Copy the JAR from the build stage
+WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
-ENTRYPOINT ["java", "-jar", "/app.jar"]
 EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]
