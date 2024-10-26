@@ -5,6 +5,8 @@ WORKDIR /app
 # Copy files from the backend directory
 COPY backend/pom.xml .
 COPY backend/src src
+
+# Copy Maven wrapper
 COPY backend/mvnw .
 COPY backend/.mvn .mvn
 
