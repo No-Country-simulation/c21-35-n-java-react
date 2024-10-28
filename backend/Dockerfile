@@ -1,20 +1,24 @@
-# Use OpenJDK 17 for the build stage (make sure to match your local version)
-FROM openjdk:17-jdk
-
-# Set the working directory
+# Stage 1: Build the JAR using Maven
+FROM openjdk:19-alpine AS build
 WORKDIR /app
 
-# Copy all files from the backend folder
-COPY backend/ .
+# Install Maven
+RUN apk add --no-cache maven
 
-# Ensure Maven wrapper has execute permissions
-RUN chmod +x ./mvnw
+# Copy pom.xml and source code to build the project
+COPY backend/pom.xml .
+COPY backend/src ./src
 
-# Run Maven wrapper to build the project
-RUN ./mvnw clean package -DskipTests
+# Build the project and create the JAR file
+RUN mvn clean package -DskipTests
 
-# Expose the port that the Spring Boot app will run on
+# Stage 2: Use the JAR in a lightweight OpenJDK image
+FROM openjdk:19-alpine
+VOLUME /tmp
+
+# Copy the JAR from the build stage
+COPY --from=build /app/target/backend-0.0.1-SNAPSHOT.jar app.jar
+
+# Run the application
+ENTRYPOINT ["java", "-jar", "/app.jar"]
 EXPOSE 8080
-
-# Run the JAR file
-CMD ["java", "-jar", "target/backend-0.0.1-SNAPSHOT.jar"]
