@@ -21,6 +21,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.net.URI;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/auth")
 @Tag(name = "Authentication", description = "Operations for login and user registration")
 public class AuthController {
