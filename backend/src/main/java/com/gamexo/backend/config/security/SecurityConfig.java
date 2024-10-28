@@ -29,11 +29,11 @@ public class SecurityConfig {
                 .sessionManagement(sessionMngConfig -> sessionMngConfig.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers(HttpMethod.POST, "/auth/**").permitAll();
-                   /* auth.requestMatchers(HttpMethod.GET, "/users", "/users/**").hasRole("ADMIN");
+                    auth.requestMatchers(HttpMethod.GET, "/users", "/users/**").authenticated();
                     auth.requestMatchers(HttpMethod.GET, "/products/**").authenticated();
                     auth.requestMatchers("/order", "/order/**").authenticated();
-                    auth.requestMatchers("/cart", "/cart/**").authenticated(); */
-                    auth.anyRequest().authenticated();
+                    auth.requestMatchers("/cart", "/cart/**").authenticated();
+                    auth.anyRequest().permitAll();
                 })
                 .addFilterBefore(new JwtTokenFilter(jwtUtils), BasicAuthenticationFilter.class)
                 .build();
