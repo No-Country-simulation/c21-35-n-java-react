@@ -34,7 +34,8 @@ public class UserService {
 
     }
 
-    public List<UserEntity> findAll() {
-        return userRepository.findAll();
+    public List<UserInfoDTO> findAll() {
+        List<UserEntity> userEntities = userRepository.findAll();
+        return userMapper.usersToDtos(userEntities);
     }
 }

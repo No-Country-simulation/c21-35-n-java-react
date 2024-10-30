@@ -9,6 +9,8 @@ import org.mapstruct.Named;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.util.List;
+
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface UserMapper {
 
@@ -25,4 +27,6 @@ public interface UserMapper {
     default String mapPassword(String password) {
         return passwordEncoder.encode(password);
     }
+
+    List<UserInfoDTO> usersToDtos(List<UserEntity> userEntities);
 }

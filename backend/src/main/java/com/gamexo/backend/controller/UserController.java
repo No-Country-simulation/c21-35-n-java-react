@@ -22,18 +22,17 @@ public class UserController {
    }
 
     @GetMapping
-    public List<UserEntity> getUsers(){
+    public List<UserInfoDTO> getUsers(){
         return userService.findAll();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserInfoDTO> getUser(@PathVariable Long id) {
+    public ResponseEntity<UserInfoDTO> getUser(@PathVariable("id") Long id) {
         UserInfoDTO userDTO = userService.getSingleUser(id);
         return ResponseEntity.ok(userDTO);
     }
 
-    @GetMapping("/test") String openEndpoint(){
-        return "Hola!!";
-    }
+
+
 
 }
